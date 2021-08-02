@@ -1,0 +1,49 @@
+<po-page-list p-title="Product Registration" [p-actions]="pageActions" [p-filter]="filterSettings">
+  <po-list-view
+    p-property-link="url"
+    p-property-title="name"
+    [p-actions]="actions"
+    [p-items]="productsFiltered"
+  >
+    <ng-template p-list-view-content-template let-item [p-title]="formatTitle">
+      <div class="po-row">
+        <po-info class="po-lg-4" p-label="Code" [p-value]="item.produtoId"></po-info>
+
+        <po-info class="po-lg-4" p-label="Description" [p-value]="item.nome"></po-info>
+
+        <po-info class="po-lg-4" p-label="Stock Location" [p-value]="item.estoque"></po-info>
+      </div>
+    </ng-template>
+
+    <ng-template p-list-view-detail-template let-item>
+      <div class="po-row">
+        <po-info class="po-md-6" p-label="price" [p-value]="item.preco"></po-info>
+
+        <po-info class="po-md-6" p-label="Picture" [p-value]="item.imagem"></po-info>
+      </div>
+    </ng-template>
+  </po-list-view>
+  <po-modal #addProductsModal [p-title]="titleaddProductsModal">
+    <div class="po-row">
+      <po-dynamic-form
+        #dynamicForm
+        p-auto-focus="name"
+        [p-fields]="fields"
+        [p-validate-fields]="validateFields"
+        [p-value]="product"
+      >
+      </po-dynamic-form>
+
+      <div class="po-row">
+        <po-button
+          class="po-md-3"
+          p-label="Save"
+          (p-click)="register();"
+        >
+        </po-button>
+      </div>
+    </div>
+  </po-modal>
+  <po-modal #deleteProductsModal [p-primary-action]="confirm" [p-secondary-action]="close" p-size="sm" p-title="Attention">
+    Do you confirm deletion of record?</po-modal>
+</po-page-list>

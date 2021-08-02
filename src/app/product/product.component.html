@@ -17,9 +17,11 @@
 
     <ng-template p-list-view-detail-template let-item>
       <div class="po-row">
-        <po-info class="po-md-6" p-label="price" [p-value]="item.preco"></po-info>
+        <po-info class="po-md-4" p-label="price" [p-value]="item.preco"></po-info>
 
-        <po-info class="po-md-6" p-label="Picture" [p-value]="item.imagem"></po-info>
+        <po-info class="po-md-4" p-label="Picture" [p-value]="item.imagem"></po-info>
+
+        <po-avatar class="po-md-4" [p-src]="item.imagem"> </po-avatar>
       </div>
     </ng-template>
   </po-list-view>
